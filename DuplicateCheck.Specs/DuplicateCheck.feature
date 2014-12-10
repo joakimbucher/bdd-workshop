@@ -5,12 +5,20 @@
 
 
 Scenario: Duplicate check with exact match
-	Given I have a person with firstname "Hans" and lastname "Meier" in the system
-	When I add a person with fistname "Hans" and lastname "Meier" to the system
+	Given I have the following person in the system:
+	| FirstName | LastName | DateOfBirth |
+	| Hans      | Meier    | 27.5.1953   |
+	When I add the following person to the system:
+	| FirstName | LastName | DateOfBirth |
+	| Hans      | Meier    | 27.5.1953   |
 	Then the system tells me that I try to add a duplicate
 	
 
 Scenario: Duplicate check with no match
-	Given I have a person with firstname "Hans" and lastname "Meier" in the system
-	When I add a person with fistname "Fritz" and lastname "Fischer" to the system
+	Given I have the following person in the system:
+	| FirstName | LastName | DateOfBirth |
+	| Hans      | Meier    | 27.5.1953   |
+	When I add the following person to the system:
+	| FirstName | LastName | DateOfBirth |
+	| Fritz     | Fischer  | 27.5.1953   |
 	Then the system accepts my entry without dublicate message
