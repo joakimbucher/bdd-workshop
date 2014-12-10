@@ -5,20 +5,24 @@
 
 
 Scenario: Duplicate check with exact match
-	Given I have the following person in the system:
-	| FirstName | LastName | DateOfBirth |
-	| Hans      | Meier    | 27.5.1953   |
+	Given I have the following persons in the system:
+		| FirstName		| LastName		| DateOfBirth |
+		| Hans			| Meier			| 27.5.1953   |
 	When I add the following person to the system:
-	| FirstName | LastName | DateOfBirth |
-	| Hans      | Meier    | 27.5.1953   |
+		| Property		| Value			|
+		| FirstName     | Hans			|
+		| LastName      | Meier			|
+		| DateOfBirth   | 27.5.1953		|
 	Then the system tells me that I try to add a duplicate
 	
 
 Scenario: Duplicate check with no match
-	Given I have the following person in the system:
-	| FirstName | LastName | DateOfBirth |
-	| Hans      | Meier    | 27.5.1953   |
+	Given I have the following persons in the system:
+		| FirstName		| LastName		| DateOfBirth |
+		| Hans			| Meier			| 27.5.1953   |
 	When I add the following person to the system:
-	| FirstName | LastName | DateOfBirth |
-	| Fritz     | Fischer  | 27.5.1953   |
+		| Property		| Value			|
+		| FirstName     | Fritz			|
+		| LastName      | Fischer		|
+		| DateOfBirth   | 27.5.1953		|
 	Then the system accepts my entry without dublicate message
