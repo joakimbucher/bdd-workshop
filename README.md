@@ -14,3 +14,6 @@ Exercise 1 (Duplicate check with exact match):
 - If there is already a person with the exact same first- and lastname the system deny the entry.
 - If no entry with the same name exist the new person is stored to the system.
 
+
+Exercise 2 (Add date of birth to duplicate check):
+- Change the duplicate check that it checks the date of birth beside the first- and lastname 
