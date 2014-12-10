@@ -3,11 +3,12 @@
 	As a user
 	I want to be told that I entered a duplicate if a simular person allready exists in the system 
 
-
-Scenario: Duplicate check with exact match
+Background:
 	Given I have the following persons in the system:
 		| FirstName		| LastName		| DateOfBirth |
 		| Hans			| Meier			| 27.5.1953   |
+
+Scenario: Duplicate check with exact match
 	When I add the following person to the system:
 		| Property		| Value			|
 		| FirstName     | Hans			|
@@ -17,9 +18,6 @@ Scenario: Duplicate check with exact match
 	
 
 Scenario: Duplicate check with no match
-	Given I have the following persons in the system:
-		| FirstName		| LastName		| DateOfBirth |
-		| Hans			| Meier			| 27.5.1953   |
 	When I add the following person to the system:
 		| Property		| Value			|
 		| FirstName     | Fritz			|

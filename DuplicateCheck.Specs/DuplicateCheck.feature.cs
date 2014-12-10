@@ -65,13 +65,9 @@ namespace DuplicateCheck.Specs
             testRunner.CollectScenarioErrors();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Duplicate check with exact match")]
-        public virtual void DuplicateCheckWithExactMatch()
+        public virtual void FeatureBackground()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Duplicate check with exact match", ((string[])(null)));
-#line 7
-this.ScenarioSetup(scenarioInfo);
+#line 6
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "FirstName",
@@ -81,8 +77,20 @@ this.ScenarioSetup(scenarioInfo);
                         "Hans",
                         "Meier",
                         "27.5.1953"});
-#line 8
+#line 7
  testRunner.Given("I have the following persons in the system:", ((string)(null)), table1, "Given ");
+#line hidden
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Duplicate check with exact match")]
+        public virtual void DuplicateCheckWithExactMatch()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Duplicate check with exact match", ((string[])(null)));
+#line 11
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Property",
@@ -96,9 +104,9 @@ this.ScenarioSetup(scenarioInfo);
             table2.AddRow(new string[] {
                         "DateOfBirth",
                         "27.5.1953"});
-#line 11
+#line 12
  testRunner.When("I add the following person to the system:", ((string)(null)), table2, "When ");
-#line 16
+#line 17
  testRunner.Then("the system tells me that I try to add a duplicate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -109,35 +117,26 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void DuplicateCheckWithNoMatch()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Duplicate check with no match", ((string[])(null)));
-#line 19
+#line 20
 this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                        "FirstName",
-                        "LastName",
-                        "DateOfBirth"});
-            table3.AddRow(new string[] {
-                        "Hans",
-                        "Meier",
-                        "27.5.1953"});
-#line 20
- testRunner.Given("I have the following persons in the system:", ((string)(null)), table3, "Given ");
-#line hidden
-            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Property",
                         "Value"});
-            table4.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "FirstName",
                         "Fritz"});
-            table4.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "LastName",
                         "Fischer"});
-            table4.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         "DateOfBirth",
                         "27.5.1953"});
-#line 23
- testRunner.When("I add the following person to the system:", ((string)(null)), table4, "When ");
-#line 28
+#line 21
+ testRunner.When("I add the following person to the system:", ((string)(null)), table3, "When ");
+#line 26
  testRunner.Then("the system accepts my entry without dublicate message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
