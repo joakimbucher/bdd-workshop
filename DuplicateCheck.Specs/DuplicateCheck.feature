@@ -15,6 +15,14 @@ Scenario: Duplicate check with exact match
 		| LastName      | Meier			|
 		| DateOfBirth   | 27.5.1953		|
 	Then the system tells me that I try to add a duplicate
+
+Scenario: Duplicate check with not matching date of birth
+	When I add the following person to the system:
+		| Property		| Value			|
+		| FirstName     | Hans			|
+		| LastName      | Meier			|
+		| DateOfBirth   | 27.5.1954		|
+	Then the system accepts my entry without dublicate message
 	
 
 Scenario: Duplicate check with no match

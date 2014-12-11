@@ -113,11 +113,11 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Duplicate check with no match")]
-        public virtual void DuplicateCheckWithNoMatch()
+        [NUnit.Framework.DescriptionAttribute("Duplicate check with not matching date of birth")]
+        public virtual void DuplicateCheckWithNotMatchingDateOfBirth()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Duplicate check with no match", ((string[])(null)));
-#line 20
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Duplicate check with not matching date of birth", ((string[])(null)));
+#line 19
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
@@ -127,16 +127,46 @@ this.FeatureBackground();
                         "Value"});
             table3.AddRow(new string[] {
                         "FirstName",
-                        "Fritz"});
+                        "Hans"});
             table3.AddRow(new string[] {
                         "LastName",
-                        "Fischer"});
+                        "Meier"});
             table3.AddRow(new string[] {
                         "DateOfBirth",
-                        "27.5.1953"});
-#line 21
+                        "27.5.1954"});
+#line 20
  testRunner.When("I add the following person to the system:", ((string)(null)), table3, "When ");
-#line 26
+#line 25
+ testRunner.Then("the system accepts my entry without dublicate message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Duplicate check with no match")]
+        public virtual void DuplicateCheckWithNoMatch()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Duplicate check with no match", ((string[])(null)));
+#line 28
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line hidden
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Property",
+                        "Value"});
+            table4.AddRow(new string[] {
+                        "FirstName",
+                        "Fritz"});
+            table4.AddRow(new string[] {
+                        "LastName",
+                        "Fischer"});
+            table4.AddRow(new string[] {
+                        "DateOfBirth",
+                        "27.5.1953"});
+#line 29
+ testRunner.When("I add the following person to the system:", ((string)(null)), table4, "When ");
+#line 34
  testRunner.Then("the system accepts my entry without dublicate message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
