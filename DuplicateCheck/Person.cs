@@ -4,6 +4,10 @@ namespace DuplicateCheck
 {
     public class Person
     {
+        public Person()
+        {
+        }
+        
         public Person(string firstName, string lastName, DateTime dateOfBirth)
         {
             FirstName = firstName;

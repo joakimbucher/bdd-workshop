@@ -4,16 +4,14 @@ using System.Globalization;
 using NUnit.Framework;
 
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 
 namespace DuplicateCheck.Specs
 {
     [Binding]
     public class DuplicateCheckSteps
     {
-        private const string FirstnameKey = "FirstName";
-        private const string LastnameKey = "LastName";
-        private const string DateOfBirthKey = "DateOfBirth";
-
+        private const string PersonKey = "PersonName";
         private const string ErrorKey = "Error";
 
         private readonly MySystem mySystem;
@@ -26,30 +24,21 @@ namespace DuplicateCheck.Specs
         [Given(@"I have the following persons in the system:")]
         public void GivenIHaveTheFollowingPersonsInTheSystem(Table table)
         {
-            foreach (var row in table.Rows)
+            foreach (var person in table.CreateSet<Person>())
             {
-                var firstName = row[FirstnameKey];
-                var lastName = row[LastnameKey];
-                var dateOfBirth = DateTime.Parse(row[DateOfBirthKey], CultureInfo.CreateSpecificCulture("de-CH"));
-
-                mySystem.AddPerson(new Person(firstName, lastName, dateOfBirth));
+                mySystem.AddPerson(person);
             }
         }
         
         [When(@"I add the following person to the system:")]
         public void WhenIAddTheFollowingPersonToTheSystem(Table table)
         {
-            var firstName = table.Rows[0]["Value"];
-            var lastName = table.Rows[1]["Value"];
-            var dateOfBirth = DateTime.Parse(table.Rows[2]["Value"], new CultureInfo("de-CH"));
-
-            ScenarioContext.Current.Add(FirstnameKey, firstName);
-            ScenarioContext.Current.Add(LastnameKey, lastName);
-            ScenarioContext.Current.Add(DateOfBirthKey, dateOfBirth);
-
+            var person = table.CreateInstance<Person>();
+            ScenarioContext.Current.Add(PersonKey, person);
+           
             try
             {
-                mySystem.AddPerson(new Person(firstName, lastName, dateOfBirth));
+                mySystem.AddPerson(person);
             }
             catch (DuplicateCheckException dce)
             {
@@ -61,14 +50,12 @@ namespace DuplicateCheck.Specs
         public void ThenTheSystemTellsMeThatITryToAddADuplicate()
         {
             var error = ScenarioContext.Current.Get<DuplicateCheckException>(ErrorKey);
-            var firstName = ScenarioContext.Current.Get<string>(FirstnameKey);
-            var lastName = ScenarioContext.Current.Get<string>(LastnameKey);
-            var dateOfBirth = ScenarioContext.Current.Get<DateTime>(DateOfBirthKey);
-
+            var person = ScenarioContext.Current.Get<Person>(PersonKey);
+            
             Assert.NotNull(error);
-            Assert.IsTrue(error.Message.Contains(firstName));
-            Assert.IsTrue(error.Message.Contains(lastName));
-            Assert.IsTrue(error.Message.Contains(dateOfBirth.ToString()));
+            Assert.IsTrue(error.Message.Contains(person.FirstName));
+            Assert.IsTrue(error.Message.Contains(person.LastName));
+            Assert.IsTrue(error.Message.Contains(person.DateOfBirth.ToString()));
         }
 
         [Then(@"the system accepts my entry without dublicate message")]
@@ -76,11 +63,9 @@ namespace DuplicateCheck.Specs
         {
             Assert.IsFalse(ScenarioContext.Current.ContainsKey(ErrorKey));
 
-            var firstName = ScenarioContext.Current.Get<string>(FirstnameKey);
-            var lastName = ScenarioContext.Current.Get<string>(LastnameKey);
-            var dateOfBirth = ScenarioContext.Current.Get<DateTime>(DateOfBirthKey);
-
-            Assert.IsNotNull(mySystem.FindPerson(firstName, lastName, dateOfBirth));
+            var person = ScenarioContext.Current.Get<Person>(PersonKey);
+           
+            Assert.IsNotNull(mySystem.FindPerson(person.FirstName, person.LastName, person.DateOfBirth));
         }
     }
 }

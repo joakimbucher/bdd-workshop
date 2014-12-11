@@ -6,7 +6,8 @@
 Background:
 	Given I have the following persons in the system:
 		| FirstName		| LastName		| DateOfBirth |
-		| Hans			| Meier			| 27.5.1953   |
+		| Hans			| Meier			| 27.5.1953   | 
+
 
 Scenario: Duplicate check with exact match
 	When I add the following person to the system:
@@ -15,6 +16,7 @@ Scenario: Duplicate check with exact match
 		| LastName      | Meier			|
 		| DateOfBirth   | 27.5.1953		|
 	Then the system tells me that I try to add a duplicate
+
 
 Scenario: Duplicate check with not matching date of birth
 	When I add the following person to the system:
@@ -25,7 +27,7 @@ Scenario: Duplicate check with not matching date of birth
 	Then the system accepts my entry without dublicate message
 	
 
-Scenario: Duplicate check with no match
+Scenario: Duplicate check with not matching firstname and lastname
 	When I add the following person to the system:
 		| Property		| Value			|
 		| FirstName     | Fritz			|
