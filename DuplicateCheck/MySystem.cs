@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DuoVia.FuzzyStrings;
 
 namespace DuplicateCheck
 {
@@ -24,7 +22,7 @@ namespace DuplicateCheck
 
         public Person FindPerson(string firstName, string lastName, DateTime dateOfBirth)
         {
-            return persons.FirstOrDefault(p => p.FirstName == firstName && p.LastName == lastName && p.DateOfBirth == dateOfBirth);
+            return persons.FirstOrDefault(p => p.FirstName.FuzzyEquals(firstName) && p.LastName.FuzzyEquals(lastName) && p.DateOfBirth == dateOfBirth);
         }
     }
 }

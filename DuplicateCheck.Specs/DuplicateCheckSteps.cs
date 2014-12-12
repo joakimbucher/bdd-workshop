@@ -46,6 +46,8 @@ namespace DuplicateCheck.Specs
         [Then(@"the system tells me that I try to add a duplicate")]
         public void ThenTheSystemTellsMeThatITryToAddADuplicate()
         {
+            Assert.IsTrue(ScenarioContext.Current.ContainsKey(ErrorKey));
+
             var error = ScenarioContext.Current.Get<DuplicateCheckException>(ErrorKey);
             var person = ScenarioContext.Current.Get<Person>(PersonKey);
             
