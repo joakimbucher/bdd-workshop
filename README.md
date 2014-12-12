@@ -4,7 +4,7 @@ BDD Workshop
 Behaviour Driven Development Workshop with SpecFlow
 
 Rules:
-- Always start with the executable specification before implemention a feature.
+- Always start with the executable specification before implementing a feature.
 - Make small steps. Don't try to write complete specification at once. 
 
 
