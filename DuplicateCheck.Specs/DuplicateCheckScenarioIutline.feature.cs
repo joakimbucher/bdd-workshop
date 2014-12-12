@@ -69,6 +69,8 @@ namespace DuplicateCheck.Specs
         [NUnit.Framework.DescriptionAttribute("Duplicate check")]
         [NUnit.Framework.TestCaseAttribute("Hans", "Meier", "27.5.1953", "Duplicate", null)]
         [NUnit.Framework.TestCaseAttribute("Hans", "Meier", "27.5.1954", "No duplicate", null)]
+        [NUnit.Framework.TestCaseAttribute("Meier", "Hans", "27.5.1953", "No duplicate", null)]
+        [NUnit.Framework.TestCaseAttribute("Meier", "Hansjakob", "27.5.1953", "No duplicate", null)]
         [NUnit.Framework.TestCaseAttribute("Fritz", "Fischer", "27.5.1953", "No duplicate", null)]
         public virtual void DuplicateCheck(string firstName, string lastName, string dateOfBirth, string duplicateCheckResult, string[] exampleTags)
         {

@@ -15,7 +15,9 @@ Scenario Outline: Duplicate check
 	Then the duplicate check result is <DuplicateCheckResult>
 
 Examples:
-| FirstName | LastName	| DateOfBirth	| DuplicateCheckResult |
-| Hans      | Meier		| 27.5.1953		| Duplicate            |
-| Hans      | Meier		| 27.5.1954		| No duplicate         |
-| Fritz     | Fischer   | 27.5.1953		| No duplicate         |
+| FirstName | LastName		| DateOfBirth	| DuplicateCheckResult |
+| Hans      | Meier			| 27.5.1953		| Duplicate            |
+| Hans      | Meier			| 27.5.1954		| No duplicate         |
+| Meier     | Hans			| 27.5.1953		| No duplicate         |
+| Meier     | Hansjakob		| 27.5.1953		| No duplicate         |
+| Fritz     | Fischer		| 27.5.1953		| No duplicate         |
