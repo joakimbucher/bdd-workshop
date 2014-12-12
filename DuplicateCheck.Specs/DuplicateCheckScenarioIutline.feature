@@ -19,6 +19,8 @@ Scenario Outline: Duplicate check
 Examples:
 | FirstName | LastName		| DateOfBirth		| DuplicateCheckResult |
 | Hans      | Meier			| 27.05.1953		| Duplicate            |
+| Hansi     | Meier			| 27.05.1953		| Duplicate            |
+| Hansli    | Meier			| 27.05.1953		| Duplicate            |
 | Hans      | Maier			| 27.05.1953		| Duplicate            |
 | Hans      | Meyer			| 27.05.1953		| Duplicate            |
 | Hans      | Meier			| 27.05.1954		| No duplicate         |
