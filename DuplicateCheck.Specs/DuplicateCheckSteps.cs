@@ -64,5 +64,20 @@ namespace DuplicateCheck.Specs
            
             Assert.IsNotNull(mySystem.FindPerson(person.FirstName, person.LastName, person.DateOfBirth));
         }
+
+        [Then(@"the duplicate check result is (.*)")]
+        public void ThenTheDuplicateCheckResultIs(string duplicateCheckResult)
+        {
+            var isDuplicate = duplicateCheckResult == "Duplicate";
+
+            if (isDuplicate)
+            {
+                ThenTheSystemTellsMeThatITryToAddADuplicate();
+            }
+            else
+            {
+                ThenTheSystemAcceptsMyEntryWithoutDublicateMessage();
+            }
+        }
     }
 }

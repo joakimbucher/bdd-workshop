@@ -51,6 +51,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DuplicateCheckScenarioIutline.feature.cs">
+      <DependentUpon>DuplicateCheckScenarioIutline.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="DuplicateCheck.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -61,6 +66,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="DuplicateCheckScenarioIutline.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DuplicateCheckScenarioIutline.feature.cs</LastGenOutput>
+    </None>
     <None Include="DuplicateCheck.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DuplicateCheck.feature.cs</LastGenOutput>
