@@ -5,8 +5,10 @@
 
 Scenario Outline: Duplicate check
 	Given I have the following persons in the system:
-		| FirstName		| LastName		| DateOfBirth |
-		| Hans			| Meier			| 27.5.1953   | 
+		| FirstName		| LastName		| DateOfBirth	|
+		| Hans			| Meier			| 27.05.1953	| 
+		| Sepp			| Huber			| 03.05.1977	|
+		| Rita			| Müller		| 15.12.1980	|  
 	When I add the following person to the system:
 		| Property		| Value			|
 		| FirstName     | <FirstName>	|
@@ -15,9 +17,10 @@ Scenario Outline: Duplicate check
 	Then the duplicate check result is <DuplicateCheckResult>
 
 Examples:
-| FirstName | LastName		| DateOfBirth	| DuplicateCheckResult |
-| Hans      | Meier			| 27.5.1953		| Duplicate            |
-| Hans      | Meier			| 27.5.1954		| No duplicate         |
-| Meier     | Hans			| 27.5.1953		| No duplicate         |
-| Meier     | Hansjakob		| 27.5.1953		| No duplicate         |
-| Fritz     | Fischer		| 27.5.1953		| No duplicate         |
+| FirstName | LastName		| DateOfBirth		| DuplicateCheckResult |
+| Hans      | Meier			| 27.05.1953		| Duplicate            |
+| Hans      | Meier			| 27.05.1954		| No duplicate         |
+| Rita      | Müller		| 15.12.1980		| Duplicate            |
+| Meier     | Hans			| 27.05.1953		| No duplicate         |
+| Meier     | Hansjakob		| 27.05.1953		| No duplicate         |
+| Fritz     | Fischer		| 27.05.1953		| No duplicate         |

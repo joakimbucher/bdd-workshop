@@ -67,11 +67,12 @@ namespace DuplicateCheck.Specs
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Duplicate check")]
-        [NUnit.Framework.TestCaseAttribute("Hans", "Meier", "27.5.1953", "Duplicate", null)]
-        [NUnit.Framework.TestCaseAttribute("Hans", "Meier", "27.5.1954", "No duplicate", null)]
-        [NUnit.Framework.TestCaseAttribute("Meier", "Hans", "27.5.1953", "No duplicate", null)]
-        [NUnit.Framework.TestCaseAttribute("Meier", "Hansjakob", "27.5.1953", "No duplicate", null)]
-        [NUnit.Framework.TestCaseAttribute("Fritz", "Fischer", "27.5.1953", "No duplicate", null)]
+        [NUnit.Framework.TestCaseAttribute("Hans", "Meier", "27.05.1953", "Duplicate", null)]
+        [NUnit.Framework.TestCaseAttribute("Hans", "Meier", "27.05.1954", "No duplicate", null)]
+        [NUnit.Framework.TestCaseAttribute("Rita", "Müller", "15.12.1980", "Duplicate", null)]
+        [NUnit.Framework.TestCaseAttribute("Meier", "Hans", "27.05.1953", "No duplicate", null)]
+        [NUnit.Framework.TestCaseAttribute("Meier", "Hansjakob", "27.05.1953", "No duplicate", null)]
+        [NUnit.Framework.TestCaseAttribute("Fritz", "Fischer", "27.05.1953", "No duplicate", null)]
         public virtual void DuplicateCheck(string firstName, string lastName, string dateOfBirth, string duplicateCheckResult, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Duplicate check", exampleTags);
@@ -85,7 +86,15 @@ this.ScenarioSetup(scenarioInfo);
             table1.AddRow(new string[] {
                         "Hans",
                         "Meier",
-                        "27.5.1953"});
+                        "27.05.1953"});
+            table1.AddRow(new string[] {
+                        "Sepp",
+                        "Huber",
+                        "03.05.1977"});
+            table1.AddRow(new string[] {
+                        "Rita",
+                        "Müller",
+                        "15.12.1980"});
 #line 7
  testRunner.Given("I have the following persons in the system:", ((string)(null)), table1, "Given ");
 #line hidden
@@ -101,9 +110,9 @@ this.ScenarioSetup(scenarioInfo);
             table2.AddRow(new string[] {
                         "DateOfBirth",
                         string.Format("{0}", dateOfBirth)});
-#line 10
+#line 12
  testRunner.When("I add the following person to the system:", ((string)(null)), table2, "When ");
-#line 15
+#line 17
  testRunner.Then(string.Format("the duplicate check result is {0}", duplicateCheckResult), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
