@@ -1,7 +1,4 @@
-﻿using System;
-using System.Globalization;
-
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
