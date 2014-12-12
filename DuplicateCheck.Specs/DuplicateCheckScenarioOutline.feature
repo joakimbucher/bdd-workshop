@@ -1,7 +1,7 @@
-﻿Feature: Duplicate Check Scenatio Outline
-	In order to avoid duplcate entries in the system
+﻿Feature: Duplicate Check Scenario Outline
+	In order to avoid duplicate entries in the system
 	As a user
-	I want to be told that I entered a duplicate if a simular person allready exists in the system 
+	I want to be told that I entered a duplicate if a similar person already exists in the system 
 
 Scenario Outline: Duplicate check
 	Given I have the following persons in the system:

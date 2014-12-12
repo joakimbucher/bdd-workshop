@@ -19,21 +19,21 @@ namespace DuplicateCheck.Specs
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Duplicate Check Scenatio Outline")]
-    public partial class DuplicateCheckScenatioOutlineFeature
+    [NUnit.Framework.DescriptionAttribute("Duplicate Check Scenario Outline")]
+    public partial class DuplicateCheckScenarioOutlineFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "DuplicateCheckScenarioIutline.feature"
+#line 1 "DuplicateCheckScenarioOutline.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Duplicate Check Scenatio Outline", "In order to avoid duplcate entries in the system\r\nAs a user\r\nI want to be told th" +
-                    "at I entered a duplicate if a simular person allready exists in the system", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Duplicate Check Scenario Outline", "In order to avoid duplicate entries in the system\r\nAs a user\r\nI want to be told t" +
+                    "hat I entered a duplicate if a similar person already exists in the system", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
