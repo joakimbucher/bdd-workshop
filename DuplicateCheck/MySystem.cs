@@ -7,6 +7,8 @@ namespace DuplicateCheck
 {
     public class MySystem
     {
+        private const double RequieredPropabilityScore = 0.4;
+
         private List<Person> persons = new List<Person>();
 
         public void AddPerson(Person person)
@@ -22,7 +24,7 @@ namespace DuplicateCheck
 
         public Person FindPerson(string firstName, string lastName, DateTime dateOfBirth)
         {
-            return persons.FirstOrDefault(p => p.FirstName.FuzzyEquals(firstName) && p.LastName.FuzzyEquals(lastName) && p.DateOfBirth == dateOfBirth);
+            return persons.FirstOrDefault(p => p.FirstName.FuzzyEquals(firstName, RequieredPropabilityScore) && p.LastName.FuzzyEquals(lastName, RequieredPropabilityScore) && p.DateOfBirth == dateOfBirth);
         }
     }
 }
