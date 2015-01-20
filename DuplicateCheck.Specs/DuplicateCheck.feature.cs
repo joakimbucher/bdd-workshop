@@ -117,7 +117,7 @@ this.FeatureBackground();
         public virtual void DuplicateCheckWithNotMatchingDateOfBirth()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Duplicate check with not matching date of birth", ((string[])(null)));
-#line 21
+#line 20
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
@@ -134,9 +134,9 @@ this.FeatureBackground();
             table3.AddRow(new string[] {
                         "DateOfBirth",
                         "27.5.1954"});
-#line 22
+#line 21
  testRunner.When("I add the following person to the system:", ((string)(null)), table3, "When ");
-#line 27
+#line 26
  testRunner.Then("the system accepts my entry without dublicate message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -147,7 +147,7 @@ this.FeatureBackground();
         public virtual void DuplicateCheckWithNotMatchingFirstnameAndLastname()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Duplicate check with not matching firstname and lastname", ((string[])(null)));
-#line 30
+#line 29
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
@@ -164,9 +164,9 @@ this.FeatureBackground();
             table4.AddRow(new string[] {
                         "DateOfBirth",
                         "27.5.1953"});
-#line 31
+#line 30
  testRunner.When("I add the following person to the system:", ((string)(null)), table4, "When ");
-#line 36
+#line 35
  testRunner.Then("the system accepts my entry without dublicate message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

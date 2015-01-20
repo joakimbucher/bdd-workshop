@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
+
+using NUnit.Framework;
 
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
@@ -23,7 +25,7 @@ namespace DuplicateCheck.Specs
         {
             foreach (var person in table.CreateSet<Person>())
             {
-                mySystem.AddPerson(person);
+                mySystem.AddPersonWithoutDuplicateCheck(person);
             }
         }
         
@@ -54,7 +56,7 @@ namespace DuplicateCheck.Specs
             Assert.NotNull(error);
             //Assert.IsTrue(error.Message.Contains(person.FirstName));
             //Assert.IsTrue(error.Message.Contains(person.LastName));
-            Assert.IsTrue(error.Message.Contains(person.DateOfBirth.ToString()));
+            //Assert.IsTrue(error.Message.Contains(person.DateOfBirth.ToString()));
         }
 
         [Then(@"the system accepts my entry without dublicate message")]
@@ -64,7 +66,7 @@ namespace DuplicateCheck.Specs
 
             var person = ScenarioContext.Current.Get<Person>(PersonKey);
            
-            Assert.IsNotNull(mySystem.FindPerson(person.FirstName, person.LastName, person.DateOfBirth));
+            Assert.IsTrue(mySystem.FindPerson(person.FirstName, person.LastName, person.DateOfBirth).Any());
         }
 
         [Then(@"the duplicate check result is (.*)")]
@@ -81,5 +83,34 @@ namespace DuplicateCheck.Specs
                 ThenTheSystemAcceptsMyEntryWithoutDublicateMessage();
             }
         }
+
+        [Then(@"the duplicate check details are:")]
+        public void ThenTheDuplicateCheckDetailsAre(Table duplicateCheckDetails)
+        {
+            if (!ScenarioContext.Current.ContainsKey(ErrorKey))
+            {
+                return;
+            }
+
+            var error = ScenarioContext.Current.Get<DuplicateCheckException>(ErrorKey);
+           
+            var duplicateDetailsSet = duplicateCheckDetails.CreateSet<DuplicateDetails>().Where(dd => !string.IsNullOrWhiteSpace(dd.Name)).ToList();
+            Assert.AreEqual(duplicateDetailsSet.Count(), error.DuplicateDetails.Count());
+
+            for (int i = 0; i < duplicateDetailsSet.Count(); i++)
+            {
+                var expectedDuplicateDetails = duplicateDetailsSet[i];
+                var duplicateDetails = error.DuplicateDetails.ToList()[i];
+
+                Assert.AreEqual(expectedDuplicateDetails.Name, duplicateDetails.Name);
+                Assert.AreEqual(expectedDuplicateDetails.Probability, duplicateDetails.Probability);
+            }
+        }
+
+        //[Then(@"the system tells me that there are (.*) persons that are likely to be duplicates with a probability of (.*) % and higher")]
+        //public void ThenTheSystemTellsMeThatThereArePersonsThatAreLikelyToBeDuplicatesWithAProbabilityOfAndHigher(int numberOfPersons, int minProbability)
+        //{
+        //    ScenarioContext.Current.Get<LastResult>()
+        //}
     }
 }

@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DuplicateCheckException.cs" />
+    <Compile Include="DuplicateDetails.cs" />
     <Compile Include="MySystem.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DuplicateCheck
 {
@@ -8,5 +9,7 @@ namespace DuplicateCheck
             : base(message)
         {
         }
+
+        public IEnumerable<DuplicateDetails> DuplicateDetails { get; set; }
     }
 }

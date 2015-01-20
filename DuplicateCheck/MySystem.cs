@@ -13,18 +13,28 @@ namespace DuplicateCheck
 
         public void AddPerson(Person person)
         {
-            var duplicate = FindPerson(person.FirstName, person.LastName, person.DateOfBirth);
-            if (duplicate != null)
+            var duplicate = FindPerson(person.FirstName, person.LastName, person.DateOfBirth).ToList();
+            if (duplicate.Any())
             {
-                throw new DuplicateCheckException(string.Format("Duplicate with name '{0} {1}' and date of birth : {2} found.", duplicate.FirstName, duplicate.LastName, duplicate.DateOfBirth));
+                throw new DuplicateCheckException("Duplicates found.") { DuplicateDetails = duplicate };
             }
 
+            AddPersonWithoutDuplicateCheck(person);
+        }
+
+        public void AddPersonWithoutDuplicateCheck(Person person)
+        {
             persons.Add(person);
         }
 
-        public Person FindPerson(string firstName, string lastName, DateTime dateOfBirth)
+        public IEnumerable<DuplicateDetails> FindPerson(string firstName, string lastName, DateTime dateOfBirth)
         {
-            return persons.FirstOrDefault(p => p.FirstName.FuzzyEquals(firstName, RequieredPropabilityScore) && p.LastName.FuzzyEquals(lastName, RequieredPropabilityScore) && p.DateOfBirth == dateOfBirth);
+            return persons.Where(p => p.FirstName.FuzzyEquals(firstName, RequieredPropabilityScore) && p.LastName.FuzzyEquals(lastName, RequieredPropabilityScore) && p.DateOfBirth == dateOfBirth)
+                .Select(p => new DuplicateDetails
+                                 {
+                                     Name = p.Fullname, 
+                                     Probability = Math.Round(Math.Min(p.LastName.FuzzyMatch(lastName), p.FirstName.FuzzyMatch(firstName)), 2)
+                                 });
         }
     }
 }
