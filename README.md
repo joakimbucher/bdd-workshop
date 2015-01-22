@@ -28,3 +28,8 @@ Exercise 4 (Fuzzy Match):
 - Add some more example to very Fuzzy Match
 - Implement duplicate check with Fuzzy Match
 
+
+Exercise 5 (Duplicate message with probability):
+- Add list of duplicates and probability to the duplicate message
+
+
